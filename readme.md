@@ -1,6 +1,5 @@
-================================================================================
 KubeJS - Dynamic Create Mod Recipe Definition Guide (for data.json)
-================================================================================
+
 
 This document explains the fields used to define Create mod recipes
 within the `kubejs/data/data.json` file and their meanings.
