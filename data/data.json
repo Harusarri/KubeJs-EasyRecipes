@@ -1,0 +1,125 @@
+{
+  "debug_mixing_dirt_to_diamond": {
+    "id": "kubejs:debug_dirt_to_diamond_mix",
+    "type": "mixing",
+    "output": "minecraft:diamond",
+    "input": ["minecraft:dirt", "minecraft:sand"],
+    "heated": true,
+    "processingTime": 100
+  },
+
+  "debug_crushing_log_to_sticks": {
+    "id": "kubejs:debug_log_to_sticks_crush",
+    "type": "crushing",
+    "output": [
+      {"item": "minecraft:stick", "count": 8},
+      {"item": "minecraft:oak_sapling", "chance": 0.1}
+    ],
+    "input": "#minecraft:logs",
+    "processingTime": 50
+  },
+
+  "debug_compacting_seeds_to_wheat": {
+    "id": "kubejs:debug_seeds_to_wheat_compact",
+    "type": "compacting",
+    "output": "minecraft:wheat",
+    "input": [
+      "minecraft:wheat_seeds",
+      "minecraft:wheat_seeds",
+      "minecraft:wheat_seeds",
+      "minecraft:wheat_seeds"
+    ]
+  },
+
+  "debug_cutting_wool_to_string": {
+    "id": "kubejs:debug_wool_to_string_cut",
+    "type": "cutting",
+    "output": {"item": "minecraft:string", "count": 4},
+    "input": "#minecraft:wool",
+    "processingTime": 60
+  },
+
+  "debug_deploying_cobble_on_feather": {
+    "id": "kubejs:debug_cobble_on_feather_deploy",
+    "type": "deploying",
+    "output": "minecraft:gravel", 
+    "input": [
+      "minecraft:feather",      
+      "minecraft:cobblestone"  
+    ]
+  },
+
+  "debug_emptying_lava_from_obsidian": {
+    "id": "kubejs:debug_lava_from_obsidian_empty",
+    "type": "emptying",
+    "output": [
+      {"fluid": "minecraft:lava", "amount": 100}, 
+      "minecraft:crying_obsidian"              
+    ],
+    "input": "minecraft:obsidian" 
+  },
+
+  "debug_filling_water_in_flowerpot": {
+    "id": "kubejs:debug_water_in_flowerpot_fill",
+    "type": "filling",
+    "output": "minecraft:water_bucket", 
+    "input": [
+      {"fluid": "minecraft:water", "amount": 1000},
+      "minecraft:flower_pot"
+    ]
+  },
+
+  "debug_haunting_stone_to_deepslate": {
+    "id": "kubejs:debug_stone_to_deepslate_haunt",
+    "type": "haunting",
+    "output": "minecraft:deepslate",
+    "input": "minecraft:stone"
+  },
+
+  "debug_mechanical_crafting_beacon": {
+    "id": "kubejs:debug_beacon_mech_craft",
+    "type": "mechanical_crafting",
+    "output": "minecraft:beacon",
+    "pattern": [
+      "DDD",
+      "DND",
+      "OOO"
+    ],
+    "keys": {
+      "D": "minecraft:diamond_block",
+      "N": "minecraft:nether_star",
+      "O": "minecraft:obsidian"
+    }
+  },
+
+  "debug_milling_sand_to_glass": {
+    "id": "kubejs:debug_sand_to_glass_mill",
+    "type": "milling",
+    "output": {"item": "minecraft:glass", "count": 1},
+    "input": "#forge:sand",
+    "processingTime": 120
+  },
+
+  "debug_pressing_paper_to_book": {
+    "id": "kubejs:debug_paper_to_book_press",
+    "type": "pressing",
+    "output": "minecraft:book",
+    "input": [ 
+      "minecraft:paper"
+    ]
+  },
+
+  "debug_sandpaper_polishing_coal_to_diamond": {
+    "id": "kubejs:debug_coal_to_diamond_sandpaper",
+    "type": "sandpaper_polishing",
+    "output": {"item": "minecraft:diamond", "chance": 0.05}, 
+    "input": "minecraft:coal"
+  },
+
+  "debug_splashing_glowstone_to_dust": {
+    "id": "kubejs:debug_glowstone_to_dust_splash",
+    "type": "splashing",
+    "output": {"item": "minecraft:glowstone_dust", "count": 4},
+    "input": "minecraft:glowstone"
+  }
+}
