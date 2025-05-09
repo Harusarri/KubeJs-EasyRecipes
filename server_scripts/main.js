@@ -1,8 +1,3 @@
-// kubejs/server_scripts/main.js
-// Create 모드 레시피를 data.json 파일에서 동적으로 로드하는 스크립트 (원본 기반 가독성 개선)
-
-// --- Helper Function: Parse Output Definition ---
-// JSON 형식의 output 정의를 KubeJS 아이템/유체 객체로 변환합니다.
 // (String, {item, count}, {item, chance}, {fluid, amount} 등 처리)
 const parseOutputItem = (outputDef) => {
     // Handle simple string ID
