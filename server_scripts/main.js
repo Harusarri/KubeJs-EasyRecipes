@@ -1,8 +1,3 @@
-// kubejs/server_scripts/main.js
-// Create 모드 레시피를 data.json 파일에서 동적으로 로드하는 스크립트 (원본 기반 가독성 개선)
-
-// --- Helper Function: Parse Output Definition ---
-// JSON 형식의 output 정의를 KubeJS 아이템/유체 객체로 변환합니다.
 // (String, {item, count}, {item, chance}, {fluid, amount} 등 처리)
 const parseOutputItem = (outputDef) => {
     // Handle simple string ID
@@ -105,12 +100,12 @@ ServerEvents.recipes(event => {
 
         if (!recipeType) { // Type itself is missing or invalid
             isValid = false;
-        } else if (recipeType === 'mechanical_crafting') { // Special case for mechanical crafting
+        } else if (recipeType === 'mechanical_crafting' || recipeType === 'shaped') { // Special case for mechanical crafting
             if (!recipeDef.pattern) { isValid = false; missingFields.push('pattern'); }
             if (!recipeDef.keys) { isValid = false; missingFields.push('keys'); }
         } else { // Most other types require 'input'
             if (!recipeDef.input) { isValid = false; missingFields.push('input'); }
-        }
+        }       
 
         if (!isValid) {
             console.warn(`[DynamicRecipes] Skipping recipe (ID: ${recipeDef.id || 'N/A'}) due to missing fields: ${missingFields.join(', ')}`);
@@ -190,6 +185,21 @@ ServerEvents.recipes(event => {
                 case 'splashing':
                     recipe = event.recipes.create.splashing(parsedOutput, recipeDef.input);
                     break;
+                // Vintage KubeJS Supports
+                case 'laser_cutting':
+                    recipe = event.recipes.vintageimprovements.laser_cutting(parsedOutput, recipeDef.input);
+                    if (recipeDef.energyCost) recipe.energyCost(recipeDef.energyCost);
+                    if (recipeDef.maxChargeRate) recipe.maxChargeRate(recipeDef.maxChargeRate);
+                    if (recipeDef.processingTime) recipe.processingTime(recipeDef.processingTime);
+                    break;// End of KubeJS Supports
+                // event.custom Option
+                case 'custom':
+                    recipe = event.custom({ type: recipeDef.customType, id: recipeDef.id, input: { item: recipeDef.input[0] }, result: { item: recipeDef.output[0] }, energy: recipeDef.energy });
+                    break; // End of event.custom
+                // Vanila Crafting Table
+                case 'shaped': 
+                    recipe = event.shaped(parsedOutput, recipeDef.pattern, recipeDef.keys);
+                    break; // End of event.shaped
                 default:
                     console.warn(`[DynamicRecipes] Unknown Create recipe type '${recipeDef.type}' (ID: ${recipeDef.id || 'N/A'}). Skipping.`);
                     return; // Skip unknown types
