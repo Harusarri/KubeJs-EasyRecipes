@@ -195,7 +195,7 @@ ServerEvents.recipes(event => {
                 // event.custom Option
                 case 'custom':
                     recipe = event.custom({ type: recipeDef.customType, id: recipeDef.id, input: { item: recipeDef.input[0] }, result: { item: recipeDef.output[0] }, energy: recipeDef.energy });
-                    break; // End of event.custom
+                    break; // End of event.custom 
                 // Vanila Crafting Table
                 case 'shaped': 
                     recipe = event.shaped(parsedOutput, recipeDef.pattern, recipeDef.keys);
